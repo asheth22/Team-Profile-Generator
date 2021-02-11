@@ -1,8 +1,6 @@
 //Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateMarkdown = require('./utils/generateMarkdown.js');
-// const axios = require('axios');
 
 const Manager = require("./data/Manager");
 const Engineer = require("./data/Engineer");
@@ -82,20 +80,9 @@ const employeeInfo = () =>
     
   ]);
 
-  // Obtain github user info using external API
-async function getUserinfo(user) {
-    
-    try {
-        const response = await axios      
-      
-        .get(`https://api.github.com/users/${user}`);
-      return response.data;
-    
-
-      } catch (error) {
-        console.log(error);
-      }
-  }
+function createManagerCard(manager) {
+    const managerCard = fs.writeFileSync("./html-templates/manager.html", "utf8");
+} 
 
 // async function to initialize app
 async function init() {
@@ -105,6 +92,7 @@ async function init() {
       const managerAnswers = await managerInfo();       
       const manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerPhone); 
       console.log('Manager Answers: ', managerAnswers) 
+      createManagerCard(manager); 
       console.log('*********************************************************'); 
       console.log("Now lets enter employee information");
       let addEmployee = true; 
