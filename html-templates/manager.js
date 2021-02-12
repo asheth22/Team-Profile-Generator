@@ -1,20 +1,22 @@
 
 function generateManager(manager) {
     return `
-<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-    <div class="card-header">
+
+<div class="card manager text-white bg-dark mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center">
         <h3 class="card-title">${manager.managerName}</h3>
-        <h4 class="card-subtitle">{{role}}</h4>
+        <h4 class="card-subtitle">Manager</h4>
     </div>
-    <div class="card-body bg-secondary">
+     <div class="card-body bg-info">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${manager.managerId}</li>
-            <li class="list-group-item">Email: ${manager.managerEmail}</li>
-            <li class="list-group-item">Office Number: ${manager.managerPhone}</li>
+            <li class="list-group-item text-black">ID: ${manager.managerId}</li>
+            <li class="list-group-item text-black">Email: ${manager.managerEmail}</li>
+            <li class="list-group-item text-black">Office Number: ${manager.managerPhone}</li>
         </ul>
+    </div>
     </div>
 </div>
 `;
 }
 
-module.exports = generateMarkdown;
+module.exports = generateManager;

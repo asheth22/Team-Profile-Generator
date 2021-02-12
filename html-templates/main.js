@@ -1,4 +1,4 @@
-function generateMain(allCards) {
+function generateMain(allCards, teamName) {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -8,18 +8,23 @@ function generateMain(allCards) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css" />
-    <title>{{teamTitle}}</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <title>${teamName} Profile</title>
+    <style>
+        li {color:black;
+        font-weight: bold;}
+        .manager {float:;eft;}
+    </style>
 </head>
 
 <body>
-    <div class="jumbotron bg-primary text-white text-center">
-        <h1>{{teamTitle}}</h1>
+    <div class="jumbotron bg-info text-white text-center">
+        <h1>${teamName}</h1>
     </div>
 
     <div class="d-flex flex-wrap justify-content-around p-2 bd-highlight">
 
-    ${allCards.join("")}
+    ${allCards}
 
     </div>
 
@@ -32,4 +37,4 @@ function generateMain(allCards) {
 `;
 }
 
-module.exports = generateMarkdown;
+module.exports = generateMain;

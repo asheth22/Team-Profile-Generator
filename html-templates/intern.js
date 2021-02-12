@@ -2,19 +2,20 @@
 function generateIntern(intern) {
     return `
 <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-    <div class="card-header">
+    <div class="card-header text-center">
         <h3 class="card-title">${intern.name}</h3>
-        <h4 class="card-subtitle">{{role}}</h4>
+        <h4 class="card-subtitle">${intern.role}</h4>
     </div>
-    <div class="card-body bg-secondary">
+    <div class="card-body bg-secondary text-black">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${intern.id}</li>
             <li class="list-group-item">Email: ${intern.email}</li>
-            <li class="list-group-item">Office Number: ${intern.school}</li>
+            <li class="list-group-item">University: ${intern.school}</li>
         </ul>
     </div>
 </div>
 `;
 }
 
-module.exports = generateMarkdown;
+
+module.exports = generateIntern;

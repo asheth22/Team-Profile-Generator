@@ -6,6 +6,11 @@ const Manager = require("./data/Manager");
 const Engineer = require("./data/Engineer");
 const Intern = require("./data/Intern");
 
+const generateManager = require("./html-templates/manager"); 
+const generateIntern = require("./html-templates/intern"); 
+const generateEngineer = require("./html-templates/engineer"); 
+const generateMain = require('./html-templates/main');
+let allCards; 
 // Pmopt user for team name
 const managerInfo = () =>
   inquirer.prompt([
@@ -92,7 +97,10 @@ async function init() {
       const managerAnswers = await managerInfo();       
       const manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerPhone); 
       console.log('Manager Answers: ', managerAnswers) 
-      createManagerCard(manager); 
+      const teamName = managerAnswers.team; 
+      const managerCard = generateManager(managerAnswers);  
+      allCards = managerCard; 
+      
       console.log('*********************************************************'); 
       console.log("Now lets enter employee information");
       let addEmployee = true; 
@@ -101,13 +109,22 @@ async function init() {
           console.log(employeeAnswers.addMember); 
           addEmployee = employeeAnswers.addMember
           if (employeeAnswers.role === 'Engineer') {
-              const engineer = new Engineer(employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, employeeAnswers.github);
+              const engineerCard = generateEngineer(employeeAnswers); 
+              console.log(engineerCard);
+              allCards += engineerCard; 
           }
           else {
-              const Intern = new Engineer(employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, employeeAnswers.school);
+              const internCard = generateIntern(employeeAnswers); 
+              console.log(internCard);
+              allCards += internCard; 
           }
       } while (addEmployee); 
       
+
+      const htmlFile = generateMain(allCards, teamName); 
+      console.log(htmlFile); 
+      const outputFile =  await fs.writeFileSync("output.html", htmlFile);
+   console.log("HTML file is successfully created!");
     //   const manager = new Manager(managerAnswers.name, id, managerAnswers.email, officeNumber)
 //     const gitInfo = await getUserinfo(answers.githubUserName);   
 //     const avatar = gitInfo.avatar_url;     
