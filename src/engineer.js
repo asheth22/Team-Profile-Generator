@@ -9,8 +9,8 @@ function generateEngineer(engineer) {
     <div class="card-body bg-secondary text-black">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${engineer.id}</li>
-            <li class="list-group-item">Email: ${engineer.email}</li>
-            <li class="list-group-item">Github: ${engineer.github}</li>
+            <li class="list-group-item">Email: ${engineer.email}</li>            
+            <li class="list-group-item">GitHub: </span><a href="https://github.com/${engineer.github}" target="_blank" rel="noopener"> ${engineer.github}</a></li>
         </ul>
     </div>
 </div>

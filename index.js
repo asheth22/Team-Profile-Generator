@@ -93,7 +93,7 @@ function createManagerCard(manager) {
 
 // async function to initialize app
 async function init() {
-  console.log("Ready to create your Software Engineering Team Profile!!");
+  console.log("Ready to create your Team Profile!!");
   // calling functions to get user respomses and github info
   try {
     const managerAnswers = await managerInfo();
@@ -101,8 +101,7 @@ async function init() {
     console.log('Manager Answers: ', managerAnswers)
     const teamName = managerAnswers.team;
     const managerCard = generateManager(managerAnswers);
-    // allCards = managerCard; 
-
+   
     console.log('*********************************************************');
     console.log("Now lets enter employee information");
     let addEmployee = true;
@@ -139,18 +138,11 @@ async function init() {
 
     } while (addEmployee);
 
-    console.log('Outtside', addEmployee); 
+   
     const htmlFile = generateMain(managerCard, allCards, teamName);
     console.log(htmlFile);
     const outputFile = await fs.writeFileSync("output.html", htmlFile);
-    console.log("HTML file is successfully created!");
-    //   const manager = new Manager(managerAnswers.name, id, managerAnswers.email, officeNumber)
-    //     const gitInfo = await getUserinfo(answers.githubUserName);   
-    //     const avatar = gitInfo.avatar_url;     
-    //     // calling function to generate and readme content and create file
-    //     const readMe = generateMarkdown(answers, avatar);    
-    //    const readMeFile =  await fs.writeFileSync("GeneratedREADME.md", readMe);
-    //    console.log("README file is successfully created!");
+    console.log("HTML file is successfully created!");    
 
   } catch (err) {
     console.log(err);
