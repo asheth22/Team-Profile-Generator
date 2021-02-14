@@ -1,4 +1,4 @@
-
+// manager card html
 function generateManager(manager) {
     return `
 

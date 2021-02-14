@@ -1,3 +1,4 @@
+// Unit tests for Employee 
 const Employee = require("../lib/Employee");
 
 it("Can instantiate Employee instance", () => {

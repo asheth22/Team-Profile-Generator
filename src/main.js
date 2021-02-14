@@ -1,3 +1,4 @@
+// src file to generate output html
 function generateMain(managerCard, allCards, teamName) {
     return `
 <!DOCTYPE html>

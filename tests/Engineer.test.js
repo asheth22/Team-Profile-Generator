@@ -1,3 +1,5 @@
+// Unit tests for Engineer
+
 const Engineer = require("../lib/Engineer");
 
 it("Can set GitHUb account via constructor", () => {

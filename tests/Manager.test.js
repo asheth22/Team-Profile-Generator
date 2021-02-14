@@ -1,5 +1,6 @@
+// unit tests for manager
 const Manager = require("../lib/Manager");
-const Employee = require("../lib/Employee");
+// const Employee = require("../lib/Employee");
 
 it("Can set office number via constructor argument", () => {
     const testValue = 100;

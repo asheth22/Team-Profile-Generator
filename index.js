@@ -2,16 +2,21 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// Constructors imported
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+// html source code
 const generateManager = require("./src/manager");
 const generateIntern = require("./src/intern");
 const generateEngineer = require("./src/engineer");
 const generateMain = require('./src/main');
+
+// variable used for validation
 let allCards;
 let firstEmp = true;
+
 // Pmopt user for team name
 const managerInfo = () =>
   inquirer.prompt([
@@ -29,6 +34,7 @@ const managerInfo = () =>
       type: 'input',
       name: 'managerId',
       message: 'Please enter employee id for the manager?',
+     
     },
     {
       type: 'input',
@@ -42,7 +48,8 @@ const managerInfo = () =>
       message: 'Please enter phone number for the manager?',
     },
   ]);
-// Questions to be prompted to the user
+
+// Questions to be prompted to the user for employee data
 const employeeInfo = () =>
   inquirer.prompt([
     {
@@ -87,18 +94,12 @@ const employeeInfo = () =>
 
   ]);
 
-function createManagerCard(manager) {
-  // const managerCard = fs.writeFileSync("./lib/manager.html", "utf8");
-}
-
-// async function to initialize app
 async function init() {
   console.log("Ready to create your Team Profile!!");
   // calling functions to get user respomses and github info
   try {
     const managerAnswers = await managerInfo();
     const manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerPhone);
-    console.log('Manager Answers: ', managerAnswers)
     const teamName = managerAnswers.team;
     const managerCard = generateManager(managerAnswers);
    
@@ -106,15 +107,12 @@ async function init() {
     console.log("Now lets enter employee information");
     let addEmployee = true;
     do {
-      const employeeAnswers = await employeeInfo();
-      console.log(employeeAnswers.addMember);
-      addEmployee = employeeAnswers.addMember
-      console.log('addEmploye', addEmployee);
+      const employeeAnswers = await employeeInfo();      
+      addEmployee = employeeAnswers.addMember      
       if (employeeAnswers.role === 'Engineer') {
         const engineerCard = generateEngineer(employeeAnswers);
-        console.log(engineerCard);
-        if (firstEmp) {
-          console.log('first empl is true');
+        
+        if (firstEmp) {          
           allCards = engineerCard;
           firstEmp = false;
         }
@@ -124,8 +122,7 @@ async function init() {
 
       }
       else {
-        const internCard = generateIntern(employeeAnswers);
-        console.log(internCard);
+        const internCard = generateIntern(employeeAnswers);       
 
         if (firstEmp) {
           allCards = internCard;
@@ -138,9 +135,8 @@ async function init() {
 
     } while (addEmployee);
 
-   
-    const htmlFile = generateMain(managerCard, allCards, teamName);
-    console.log(htmlFile);
+  //  Creating html output file
+    const htmlFile = generateMain(managerCard, allCards, teamName);    
     const outputFile = await fs.writeFileSync("output.html", htmlFile);
     console.log("HTML file is successfully created!");    
 

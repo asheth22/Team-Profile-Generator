@@ -1,3 +1,4 @@
+// Unit tests for intern
 const Intern = require("../lib/Intern");
 
 it("Can set school via constructor", () => {
