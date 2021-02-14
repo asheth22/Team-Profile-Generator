@@ -8,8 +8,8 @@ function generateEngineer(engineer) {
     </div>
     <div class="card-body bg-secondary text-black">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.id}</li>
-            <li class="list-group-item">Email: ${engineer.email}</li>            
+            <li class="list-group-item">ID: ${engineer.id}</li>            
+            <li class="list-group-item">Email: </span><a href="mailto:${engineer.email}">${engineer.email}</a></li>            
             <li class="list-group-item">GitHub: </span><a href="https://github.com/${engineer.github}" target="_blank" rel="noopener"> ${engineer.github}</a></li>
         </ul>
     </div>

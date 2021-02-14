@@ -10,6 +10,7 @@ function generateManager(manager) {
      <div class="card-body bg-info">
         <ul class="list-group list-group-flush">
             <li class="list-group-item text-black">ID: ${manager.managerId}</li>
+            <li class="list-group-item">Email: </span><a href="mailto:${manager.managerEmail}">${manager.managerEmail}</a></li>            
             <li class="list-group-item text-black">Email: ${manager.managerEmail}</li>
             <li class="list-group-item text-black">Office Number: ${manager.managerPhone}</li>
         </ul>

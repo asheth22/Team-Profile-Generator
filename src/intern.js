@@ -9,7 +9,7 @@ function generateIntern(intern) {
     <div class="card-body bg-secondary text-black">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${intern.id}</li>
-            <li class="list-group-item">Email: ${intern.email}</li>
+            <li class="list-group-item">Email: </span><a href="mailto:${intern.email}">${intern.email}</a></li>            
             <li class="list-group-item">University: ${intern.school}</li>
         </ul>
     </div>
