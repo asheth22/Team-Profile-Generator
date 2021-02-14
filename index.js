@@ -2,14 +2,14 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const Manager = require("./data/Manager");
-const Engineer = require("./data/Engineer");
-const Intern = require("./data/Intern");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
-const generateManager = require("./lib/manager");
-const generateIntern = require("./lib/intern");
-const generateEngineer = require("./lib/engineer");
-const generateMain = require('./lib/main');
+const generateManager = require("./src/manager");
+const generateIntern = require("./src/intern");
+const generateEngineer = require("./src/engineer");
+const generateMain = require('./src/main');
 let allCards;
 let firstEmp = true;
 // Pmopt user for team name
